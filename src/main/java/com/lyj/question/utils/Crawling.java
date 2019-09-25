@@ -25,7 +25,9 @@ public class Crawling {
         Document document= null;
         Random random = new Random();
         try {
-            Thread.sleep((random.nextInt(maxTime-minTime)+minTime)*1000);
+            if(maxTime>minTime&&minTime>=0){
+                Thread.sleep((random.nextInt(maxTime-minTime)+minTime)*1000);
+            }
             document = Jsoup.connect(url).get();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -60,9 +62,9 @@ public class Crawling {
         }
         return tests;
     }
-    public static void Crawing(List<String> urls,int minTime,int maxTime,TestRepository repository,boolean delTable){
-        if (delTable) {
-            repository.deleteAll();
+    public static void Crawing(List<String> urls,int minTime,int maxTime,TestRepository repository,boolean clear){
+        if (clear) {
+            repository.clear();
         }
         for (String s:urls) {
             int flag=0;

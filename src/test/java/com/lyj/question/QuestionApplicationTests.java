@@ -1,8 +1,8 @@
 package com.lyj.question;
 
-import com.lyj.question.entity.Test;
 import com.lyj.question.repository.TestRepository;
 import com.lyj.question.utils.Crawling;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,14 +19,13 @@ public class QuestionApplicationTests {
     private TestRepository repository;
 
     /**
-     * Crawling.Craw(例题网址,最短爬取间隔，最长爬取间隔)
+     * Crawling.Craw(例题网址,最短爬取间隔,最长爬取间隔,是否清空表)
      */
     @org.junit.Test
     public void contextLoads() {
         List<String> urls =Arrays.asList(
                 "http://tes.tmooc.cn/qsexam/QSRandomPaperExam?courseId=qw9387"
         );
-        //爬取地址们,最小爬取间隔,最大爬取间隔,数据库jpa,是否先清空表
-        Crawling.Crawing(urls,0,1,repository,false);
+        Crawling.Crawing(urls,0,1,repository,true);
     }
 }
