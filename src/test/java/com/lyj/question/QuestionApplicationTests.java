@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,8 +25,18 @@ public class QuestionApplicationTests {
     @org.junit.Test
     public void contextLoads() {
         List<String> urls =Arrays.asList(
-                "http://tes.tmooc.cn/qsexam/QSRandomPaperExam?courseId=qw9387"
+                "http://tes.tmooc.cn/qsexam/QSRandomPaperExam?courseId=qw8671"
         );
-        Crawling.Crawing(urls,0,1,repository,true);
+        urls=new ArrayList();
+        String pre="http://tes.tmooc.cn/qsexam/QSRandomPaperExam?courseId=qw";
+        for (int i = 8657; i <=8693; i++) {
+            String s= pre+i;
+            urls.add(s);
+        }
+        for (int i = 9328; i <=9366; i++) {
+            String s= pre+i;
+            urls.add(s);
+        }
+        Crawling.Crawing(urls,0,0,repository,true);
     }
 }

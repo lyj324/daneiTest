@@ -67,6 +67,7 @@ public class Crawling {
             repository.clear();
         }
         for (String s:urls) {
+            System.out.println(s);
             int flag=0;
             while (flag != 25) {
                 int count=0;
@@ -82,6 +83,9 @@ public class Crawling {
                             save=true;
                         }
                     }
+                }
+                if(craw.size()==0){
+                    flag=25;
                 }
                 if(save){
                     flag++;
